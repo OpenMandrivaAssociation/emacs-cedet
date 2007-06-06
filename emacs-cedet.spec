@@ -1,44 +1,40 @@
-%define fname		cedet
-%define name		emacs-%{fname}
-%define version		1.0
-%define beta		pre3
-%define rel		2
-%define release		%mkrel 0.%{beta}.%{rel}
+%define fname            cedet
+%define beta             pre4
 
-%define cogre_evr	%{epoch}:0.5-%{rel}
-%define ede_evr		%{epoch}:1.0-0.beta3.%{rel}
-%define eieio_evr	%{epoch}:0.18-0.beta2.%{rel}
-%define semantic_evr	%{epoch}:2.0-0.beta3.%{rel}
-%define speedbar_evr	%{epoch}:0.15-0.beta1.%{rel}
+%define cogre_evr        %{epoch}:0.5-%{release}
+%define ede_evr          %{epoch}:1.0-0.pre4.%{release}
+%define eieio_evr        %{epoch}:1.0-%{release}
+%define semantic_evr     %{epoch}:2.0-0.pre4.%{release}
+%define speedbar_evr     %{epoch}:1.0.1-%{release}
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Epoch:		0
-Summary:	Collection of Emacs Development Environment Tools
-License:	GPL
-URL:		http://sourceforge.net/projects/cedet/
-Source:		http://download.sourceforge.net/sourceforge/cedet/%{fname}-%{version}%{beta}.tar.bz2
-Group:		Editors
-Provides:	cedet = %{epoch}:%{version}-%{release}
-Provides:	cogre = %{cogre_evr}
-Provides:	emacs-cogre = %{cogre_evr}
-Provides:	ede = %{ede_evr}
-Provides:	emacs-ede = %{ede_evr}
-Provides:	eieio = %{eieio_evr}
-Obsoletes:	emacs-eieio
-Provides:	emacs-eieio = %{eieio_evr}
-Provides:	semantic = %{semantic_evr}
-Obsoletes:	emacs-semantic
-Provides:	emacs-semantic = %{semantic_evr}
-Provides:	speedbar = %{speedbar_evr}
-Obsoletes:	emacs-speedbar
-Provides:	emacs-speedbar = %{speedbar_evr}
-Requires:	emacs-bin
-BuildRequires:	emacs-bin
-BuildRequires:	texinfo
-BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
+Name:           emacs-%{fname}
+Version:        1.0
+Release:        %mkrel 0.%{beta}.1
+Epoch:          0
+Summary:        Collection of Emacs Development Environment Tools
+License:        GPL
+URL:            http://sourceforge.net/projects/cedet/
+Source:         http://download.sourceforge.net/sourceforge/cedet/%{fname}-%{version}%{beta}.tar.gz
+Group:          Editors
+Provides:       cedet = %{epoch}:%{version}-%{release}
+Provides:       cogre = %{cogre_evr}
+Provides:       emacs-cogre = %{cogre_evr}
+Provides:       ede = %{ede_evr}
+Provides:       emacs-ede = %{ede_evr}
+Provides:       eieio = %{eieio_evr}
+Obsoletes:      emacs-eieio < %{eieio_evr}
+Provides:       emacs-eieio = %{eieio_evr}
+Provides:       semantic = %{semantic_evr}
+Obsoletes:      emacs-semantic < %{semantic_evr}
+Provides:       emacs-semantic = %{semantic_evr}
+Obsoletes:      emacs-speedbar < %{speedbar_evr}
+Provides:       speedbar = %{speedbar_evr}
+Provides:       emacs-speedbar = %{speedbar_evr}
+Requires:       emacs-bin
+BuildRequires:  emacs-bin
+BuildRequires:  texinfo
+BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 CEDET is a collection of tools written with the end goal of
@@ -57,7 +53,7 @@ installation and version management.
 
 %prep
 %setup -q -n %{fname}-%{version}%{beta}
-find . -type f -name "*.info" | xargs %{__rm} -f
+%{_bindir}/find . -type f -name "*.info" | %{_bindir}/xargs %{__rm}
 
 %build
 %{__make} clean-autoloads
