@@ -34,7 +34,6 @@ Requires:       emacs-bin
 BuildRequires:  emacs-bin
 BuildRequires:  texinfo
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 CEDET is a collection of tools written with the end goal of
