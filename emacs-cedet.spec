@@ -1,11 +1,11 @@
 %define fname            cedet
-%define beta             pre4
+%define beta             pre6
 
-%define cogre_evr        %{epoch}:0.5-%{release}
-%define ede_evr          %{epoch}:1.0-0.pre4.%{release}
-%define eieio_evr        %{epoch}:1.0-%{release}
-%define semantic_evr     %{epoch}:2.0-0.pre4.%{release}
-%define speedbar_evr     %{epoch}:1.0.1-%{release}
+%define cogre_evr        %{epoch}:0.7-%{release}
+%define ede_evr          %{epoch}:1.0-0.pre6.%{release}
+%define eieio_evr        %{epoch}:1.2-%{release}
+%define semantic_evr     %{epoch}:2.0-0.pre6.%{release}
+%define speedbar_evr     %{epoch}:1.0.2-%{release}
 
 Name:           emacs-%{fname}
 Version:        1.0
