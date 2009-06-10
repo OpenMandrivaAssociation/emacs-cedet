@@ -9,7 +9,7 @@
 
 Name:           emacs-%{fname}
 Version:        1.0
-Release:        %mkrel 0.%{beta}.1
+Release:        %mkrel 0.%{beta}.2
 Epoch:          0
 Summary:        Collection of Emacs Development Environment Tools
 License:        GPL
@@ -111,6 +111,11 @@ installation and version management.
 %{__install} -m 644 speedbar/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/speedbar
 %{__install} -m 644 speedbar/*.xpm %{buildroot}%{_datadir}/emacs/site-lisp/speedbar
 
+# srecode
+%{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/srecode/templates
+%{__install} -m 644 srecode/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/srecode
+%{__install} -m 644 srecode/templates/* %{buildroot}%{_datadir}/emacs/site-lisp/srecode/templates
+
 # Install symlinks for upstream compat
 %{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/cedet
 pushd %{buildroot}%{_datadir}/emacs/site-lisp/cedet
@@ -121,6 +126,7 @@ pushd %{buildroot}%{_datadir}/emacs/site-lisp/cedet
 %{__ln_s} ../eieio eieio
 %{__ln_s} ../semantic semantic
 %{__ln_s} ../speedbar speedbar
+%{__ln_s} ../srecode srecode
 popd
 
 # Install startup script
