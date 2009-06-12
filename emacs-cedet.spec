@@ -9,7 +9,7 @@
 
 Name:           emacs-%{fname}
 Version:        1.0
-Release:        %mkrel 0.%{beta}.2
+Release:        %mkrel 0.%{beta}.3
 Epoch:          0
 Summary:        Collection of Emacs Development Environment Tools
 License:        GPL
@@ -88,11 +88,7 @@ installation and version management.
 %{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/eieio
 %{__install} -m 644 eieio/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/eieio
 
-# remove examples and tests
-%{__rm} -f %{buildroot}%{_datadir}/emacs/site-lisp/eieio/tree.el{,c}
-%{__rm} -f %{buildroot}%{_datadir}/emacs/site-lisp/eieio/call-tree.el{,c}
-%{__rm} -f %{buildroot}%{_datadir}/emacs/site-lisp/eieio/linemark.el{,c}
-%{__rm} -f %{buildroot}%{_datadir}/emacs/site-lisp/eieio/lmcompile.el{,c}
+# remove eieio tests
 %{__rm} -f %{buildroot}%{_datadir}/emacs/site-lisp/eieio/eieio-tests.el{,c}
 
 # semantic
