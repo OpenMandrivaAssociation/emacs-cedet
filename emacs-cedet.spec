@@ -1,15 +1,15 @@
 %define fname            cedet
-%define beta             pre6
+%define beta             pre7
 
-%define cogre_evr        %{epoch}:0.7-%{release}
-%define ede_evr          %{epoch}:1.0-0.pre6.%{release}
+%define cogre_evr        %{epoch}:1.0-0.pre7.%{release}
+%define ede_evr          %{epoch}:1.0-0.pre7.%{release}
 %define eieio_evr        %{epoch}:1.2-%{release}
-%define semantic_evr     %{epoch}:2.0-0.pre6.%{release}
-%define speedbar_evr     %{epoch}:1.0.2-%{release}
+%define semantic_evr     %{epoch}:2.0-0.pre7.%{release}
+%define speedbar_evr     %{epoch}:1.0.3-%{release}
 
 Name:           emacs-%{fname}
 Version:        1.0
-Release:        %mkrel 0.%{beta}.3
+Release:        %mkrel 0.%{beta}.1
 Epoch:          0
 Summary:        Collection of Emacs Development Environment Tools
 License:        GPL
