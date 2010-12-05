@@ -9,7 +9,7 @@
 
 Name:           emacs-%{fname}
 Version:        1.0
-Release:        %mkrel 0.%{beta}.1
+Release:        %mkrel 0.%{beta}.2
 Epoch:          0
 Summary:        Collection of Emacs Development Environment Tools
 License:        GPL
