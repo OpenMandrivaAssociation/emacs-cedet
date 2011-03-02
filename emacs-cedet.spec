@@ -1,20 +1,19 @@
 %define fname            cedet
-%define beta             pre7
 
-%define cogre_evr        %{epoch}:1.0-0.pre7.%{release}
-%define ede_evr          %{epoch}:1.0-0.pre7.%{release}
-%define eieio_evr        %{epoch}:1.2-%{release}
-%define semantic_evr     %{epoch}:2.0-0.pre7.%{release}
+%define cogre_evr        %{epoch}:1.0-%{release}
+%define ede_evr          %{epoch}:1.0-%{release}
+%define eieio_evr        %{epoch}:1.3-%{release}
+%define semantic_evr     %{epoch}:2.0-%{release}
 %define speedbar_evr     %{epoch}:1.0.3-%{release}
 
 Name:           emacs-%{fname}
 Version:        1.0
-Release:        %mkrel 0.%{beta}.2
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Collection of Emacs Development Environment Tools
 License:        GPL
 URL:            http://sourceforge.net/projects/cedet/
-Source:         http://download.sourceforge.net/sourceforge/cedet/%{fname}-%{version}%{beta}.tar.gz
+Source:         http://download.sourceforge.net/sourceforge/cedet/%{fname}-%{version}.tar.gz
 Group:          Editors
 Provides:       cedet = %{epoch}:%{version}-%{release}
 Provides:       cogre = %{cogre_evr}
@@ -47,12 +46,8 @@ as Microsoft's Visual environment, JBuilder, Eclipse, or KDevelop.
 CEDET is a project which brings together several different tools
 needed to implement advanced features.
 
-CEDET tools including EIEIO, Semantic, Speedbar, EDE, and COGRE are
-now distributed together in a single file. This simplifies
-installation and version management.
-
 %prep
-%setup -q -n %{fname}-%{version}%{beta}
+%setup -q -n %{fname}-%{version}
 %{_bindir}/find . -type f -name "*.info" | %{_bindir}/xargs %{__rm}
 
 %build
@@ -75,14 +70,16 @@ installation and version management.
 %{__install} -m 644 contrib/*.wy %{buildroot}%{_datadir}/emacs/site-lisp/cedet-contrib
 
 # cogre
-%{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/cogre
+%{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/cogre/templates
 %{__install} -m 644 cogre/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/cogre
+%{__install} -m 644 cogre/*.xpm %{buildroot}%{_datadir}/emacs/site-lisp/cogre
 %{__install} -m 644 cogre/*.wy %{buildroot}%{_datadir}/emacs/site-lisp/cogre
+%{__install} -m 644 cogre/templates/*.srt %{buildroot}%{_datadir}/emacs/site-lisp/cogre/templates
 
 # ede
-%{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/ede
+%{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/ede/templates
 %{__install} -m 644 ede/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/ede
-#%{__rm} -f %{buildroot}%{_datadir}/emacs/site-lisp/ede/ede-proj-skel.el{,c}
+%{__install} -m 644 ede/templates/*.srt %{buildroot}%{_datadir}/emacs/site-lisp/ede/templates
 
 # eieio
 %{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/eieio
@@ -98,6 +95,10 @@ installation and version management.
 %{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/semantic/bovine
 %{__install} -m 644 semantic/bovine/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/semantic/bovine
 %{__install} -m 644 semantic/bovine/*.by %{buildroot}%{_datadir}/emacs/site-lisp/semantic/bovine
+%{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/semantic/ctags
+%{__install} -m 644 semantic/ctags/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/semantic/ctags
+%{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/semantic/symref
+%{__install} -m 644 semantic/symref/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/semantic/symref
 %{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/semantic/wisent
 %{__install} -m 644 semantic/wisent/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/semantic/wisent
 %{__install} -m 644 semantic/wisent/*.wy %{buildroot}%{_datadir}/emacs/site-lisp/semantic/wisent
@@ -110,6 +111,7 @@ installation and version management.
 # srecode
 %{__mkdir_p} %{buildroot}%{_datadir}/emacs/site-lisp/srecode/templates
 %{__install} -m 644 srecode/*.el{,c} %{buildroot}%{_datadir}/emacs/site-lisp/srecode
+%{__install} -m 644 srecode/*.wy %{buildroot}%{_datadir}/emacs/site-lisp/srecode
 %{__install} -m 644 srecode/templates/* %{buildroot}%{_datadir}/emacs/site-lisp/srecode/templates
 
 # Install symlinks for upstream compat
@@ -144,16 +146,18 @@ EOF
 # Install infopages
 %{__mkdir_p} %{buildroot}%{_infodir} 
 for info in cogre/cogre.info \
-         ede/ede.info \
-         eieio/eieio.info \
-         semantic/doc/bovine.info \
-         semantic/doc/grammar-fw.info \
-         semantic/doc/semantic-appdev.info \
-         semantic/doc/semantic-langdev.info \
-         semantic/doc/semantic-user.info \
-         semantic/doc/semantic.info \
-         semantic/doc/wisent.info \
-         speedbar/speedbar.info; do
+            common/cedet.info \
+            ede/ede.info \
+            eieio/eieio.info \
+            semantic/doc/bovine.info \
+            semantic/doc/grammar-fw.info \
+            semantic/doc/semantic-appdev.info \
+            semantic/doc/semantic.info \
+            semantic/doc/semantic-langdev.info \
+            semantic/doc/semantic-user.info \
+            semantic/doc/wisent.info \
+            speedbar/speedbar.info \
+            srecode/srecode.info; do
     %{__install} -m 644 ${info} %{buildroot}%{_infodir}
 done
 
@@ -171,6 +175,7 @@ done
 
 %post
 %_install_info bovine.info
+%_install_info cedet.info
 %_install_info cogre.info
 %_install_info ede.info
 %_install_info eieio.info
@@ -180,10 +185,12 @@ done
 %_install_info semantic-appdev.info
 %_install_info semantic-langdev.info
 %_install_info speedbar.info
+%_install_info srecode.info
 %_install_info wisent.info
 
 %postun
 %_remove_install_info bovine.info
+%_remove_install_info cedet.info
 %_remove_install_info cogre.info
 %_remove_install_info ede.info
 %_remove_install_info eieio.info
@@ -193,6 +200,7 @@ done
 %_remove_install_info semantic-appdev.info
 %_remove_install_info semantic-langdev.info
 %_remove_install_info speedbar.info
+%_remove_install_info srecode.info
 %_remove_install_info wisent.info
 
 %files
