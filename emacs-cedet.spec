@@ -209,3 +209,50 @@ done
 %{_datadir}/emacs/site-lisp/*
 %config(noreplace) %{_sysconfdir}/emacs/site-start.d/*.el
 %{_infodir}/*.info*
+
+
+%changelog
+* Sun May 15 2011 Lev Givon <lev@mandriva.org> 0:1.0-2mdv2011.0
++ Revision: 674867
+- Rebuild for contrib/updates to address parsing problem (#57629).
+
+* Wed Mar 02 2011 Lev Givon <lev@mandriva.org> 0:1.0-1
++ Revision: 641310
+- Update to 1.0.
+  Include some missing files.
+
+* Sun Dec 05 2010 Oden Eriksson <oeriksson@mandriva.com> 0:1.0-0.pre7.2mdv2011.0
++ Revision: 610354
+- rebuild
+
+* Wed Apr 28 2010 Lev Givon <lev@mandriva.org> 0:1.0-0.pre7.1mdv2010.1
++ Revision: 540431
+- Update to 1.0pre7.
+
+* Fri Jun 12 2009 Lev Givon <lev@mandriva.org> 0:1.0-0.pre6.3mdv2010.0
++ Revision: 385572
+- Include linemark.el and lmcompile.el in the package.
+
+* Wed Jun 10 2009 Lev Givon <lev@mandriva.org> 0:1.0-0.pre6.2mdv2010.0
++ Revision: 384975
+- Install srecode.
+- Update to 1.0pre6.
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 0:1.0-0.pre4.1mdv2008.1
++ Revision: 136403
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + David Walluck <walluck@mandriva.org>
+    - 2.0pre4 (compatible with emacs 22)
+    - Import emacs-cedet
+
+
+
+* Mon Sep 04 2006 David Walluck <walluck@mandriva.org> 0:1.0-0.pre3.2mdv2007.0
+- rebuild to fix release
+
+* Mon Jan 30 2006 David Walluck <walluck@mandriva.org> 0:1.0-0.pre3.1mdk
+- release
