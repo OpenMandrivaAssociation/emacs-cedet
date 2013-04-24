@@ -174,20 +174,6 @@ done
 %{__rm} -rf %{buildroot}
 
 
-%postun
-%_remove_install_info bovine.info
-%_remove_install_info cedet.info
-%_remove_install_info cogre.info
-%_remove_install_info ede.info
-%_remove_install_info eieio.info
-%_remove_install_info grammar-fw.info
-%_remove_install_info semantic.info
-%_remove_install_info semantic-user.info
-%_remove_install_info semantic-appdev.info
-%_remove_install_info semantic-langdev.info
-%_remove_install_info speedbar.info
-%_remove_install_info srecode.info
-%_remove_install_info wisent.info
 
 %files
 %defattr(-, root, root)
