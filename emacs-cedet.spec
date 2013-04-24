@@ -173,20 +173,6 @@ done
 %clean
 %{__rm} -rf %{buildroot}
 
-%post
-%_install_info bovine.info
-%_install_info cedet.info
-%_install_info cogre.info
-%_install_info ede.info
-%_install_info eieio.info
-%_install_info grammar-fw.info
-%_install_info semantic.info
-%_install_info semantic-user.info
-%_install_info semantic-appdev.info
-%_install_info semantic-langdev.info
-%_install_info speedbar.info
-%_install_info srecode.info
-%_install_info wisent.info
 
 %postun
 %_remove_install_info bovine.info
