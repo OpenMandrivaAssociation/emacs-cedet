@@ -7,13 +7,13 @@
 %define speedbar_evr     %{epoch}:1.0.3-%{release}
 
 Name:           emacs-%{fname}
-Version:        1.0
-Release:        3
+Version:        1.1
+Release:        1
 Epoch:          0
 Summary:        Collection of Emacs Development Environment Tools
 License:        GPL
 URL:            http://sourceforge.net/projects/cedet/
-Source:         http://download.sourceforge.net/sourceforge/cedet/%{fname}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/cedet/files/cedet/cedet-%{version}.tar.gz
 Group:          Editors
 Provides:       cedet = %{epoch}:%{version}-%{release}
 Provides:       cogre = %{cogre_evr}
@@ -228,3 +228,4 @@ done
 
 * Mon Jan 30 2006 David Walluck <walluck@mandriva.org> 0:1.0-0.pre3.1mdk
 - release
+
