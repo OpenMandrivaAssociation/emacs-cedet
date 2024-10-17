@@ -12,7 +12,7 @@ Release:        2
 Epoch:          0
 Summary:        Collection of Emacs Development Environment Tools
 License:        GPL
-URL:            http://sourceforge.net/projects/cedet/
+URL:            https://sourceforge.net/projects/cedet/
 Source:         https://sourceforge.net/projects/cedet/files/cedet/cedet-%{version}.tar.gz
 Group:          Editors
 Provides:       cedet = %{epoch}:%{version}-%{release}
